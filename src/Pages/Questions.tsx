@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import aranyJanosUtca from "../assets/fortepan_82178_aranyjanosutca.jpg";
 import bazilika from "../assets/fortepan_82346_bazilika.jpg";
 import harmadikHaz from "../assets/fortepan_82129_BZS37.jpg";

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import s from "./Pairing.module.scss";
 import clsx from 'clsx';
 
 const Pairing = () => {
     const [selection, setSelection] = useState<number>();
-    const [solutions, setSolutions] = useState<number[]>([]);
+    // const [solutions, setSolutions] = useState<number[]>([]);
     const [errors, setErrors] = useState<{ [id: number]: boolean }>({});
     const [solved, setSolved] = useState<{ [id: number]: boolean }>({});
 
