@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    div {
+      -webkit-box-shadow: 0px 0px 50px 2px rgba(0, 0, 0, 0.36);
+      box-shadow: 0px 0px 50px 2px rgba(173, 173, 173, 0.36);
+      border: 1px rgb(182, 182, 182) solid;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: white;
+
+      &.selected {
+        background-color: rgb(255, 238, 160);
+      }
+
+      &.wrong {
+        background-color: red;
+      }
+
+      &.color1 {
+        background-color: brown;
+      }
+
+      &.color2 {
+        background-color: rgb(165, 142, 42);
+      }
+
+      &.color3 {
+        background-color: rgb(42, 165, 144);
+      }
+
+      &.color4 {
+        background-color: rgb(42, 65, 165);
+      }
+
+      &.color5 {
+        background-color: rgb(165, 42, 159);
+      }
+
+      &.color6 {
+        background-color: rgb(42, 165, 93);
+      }
+
+      &.color7 {
+        background-color: rgb(121, 126, 201);
+      }
+    }
+  }
+}
