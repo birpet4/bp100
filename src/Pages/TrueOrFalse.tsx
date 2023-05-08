@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import s from "./TrueOrFalse.module.scss";
 import clsx from 'clsx';
 
