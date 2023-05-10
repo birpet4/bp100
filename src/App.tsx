@@ -5,12 +5,14 @@ import Pairing from './Pages/Pairing';
 import TrueOrFalse from './Pages/TrueOrFalse';
 import Pictures from './Pages/Pictures';
 import PicturesPairing from './Pages/PicturesPairing';
+import Home from './Pages/Home';
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route path="/" Component={Home} />
           <Route path="/questions" Component={Questions} />
           <Route path="/pair" Component={Pairing} />
           <Route path="/trueorfalse" Component={TrueOrFalse} />
