@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://birpet4.github.io/bp100",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
