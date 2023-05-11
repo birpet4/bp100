@@ -1,46 +1,81 @@
 import { useState } from 'react';
 import s from "./Pairing.module.scss";
 import clsx from 'clsx';
+import { shuffleArray } from '../helpers/helper';
 
-const Pairing = () => {
-    const [selection, setSelection] = useState<number>();
-    // const [solutions, setSolutions] = useState<number[]>([]);
-    const [errors, setErrors] = useState<{ [id: number]: boolean }>({});
-    const [solved, setSolved] = useState<{ [id: number]: boolean }>({});
+type Pair = {
+    id: number;
+    word: string;
+    pair: string;
+    selected?: PairColumn;
+};
 
+const initialPairs: Pair[] = [
+    { id: 1, word: 'kőfaragó', pair: 'Sóskúti Rt.' },
+    { id: 2, word: 'műlakatos', pair: 'Árkay S.' },
+    { id: 3, word: 'ács', pair: 'Neuschlosz K. és fia' },
+    { id: 4, word: 'tartószerkezet', pair: 'Schlick' },
+    { id: 5, word: 'öntöttvas szerkezet', pair: 'MÁVAG' },
+    { id: 6, word: 'színesüveg', pair: 'Forgó István' },
+    { id: 7, word: 'műasztalos', pair: 'Westermayer A.' },
+];
 
-    const onClick = (id: number) => {
-        if (selection === id) {
-            setSolved({ ...solved, [id]: true });
-            setSelection(undefined);
-            setErrors({});
-        } else if (!selection) {
-            setSelection(id);
+interface Answer {
+    id: number;
+    column: PairColumn
+}
+
+enum PairColumn {
+    Left = "left",
+    Right = "right"
+}
+
+const Pairing = () => {// Shuffle the array before initializing the state
+    const shuffledPairsLeft = shuffleArray([...initialPairs]);
+    const shuffledPairsRight = shuffleArray([...initialPairs]);
+    const [pairs, setPairs] = useState<Pair[]>(shuffledPairsLeft);
+    const [left, setLeft] = useState<Pair[]>(shuffledPairsRight);
+
+    const [selectedPair, setSelectedPair] = useState<Pair>();
+    const [wrong, setWrong] = useState<Answer>();
+    const [right, setRight] = useState<number>();
+
+    const selectPair = (pair: Pair, column: PairColumn) => {
+        // If there is a selected pair, check if the new selection is a match
+        if (selectedPair) {
+            if (pair.id === selectedPair.id) {
+                // Remove the matched pair from the list
+                setRight(pair.id);
+                setTimeout(() => { setPairs(pairs.filter((p) => p.id !== pair.id)); setLeft(left.filter((p) => p.id !== pair.id)); setRight(undefined); setSelectedPair(undefined); }, 1000);
+            } else {
+                setWrong({ id: pair.id, column: column });
+                setTimeout(() => { setWrong(undefined); setSelectedPair(undefined); }, 1000);
+            }
         } else {
-            setErrors({ ...errors, [id]: true });
+            setSelectedPair({ ...pair, selected: column });
         }
-    }
+    };
 
-    return <div className={s.container}>
-        <div className={s.column}>
-            <div onClick={() => onClick(1)} className={clsx({ [s.selected]: selection === 1, [s.wrong]: errors[1], [s.color1]: solved[1] })}>Kőfaragó</div>
-            <div>műlakatos</div>
-            <div>ács</div>
-            <div>tartószerkezet</div>
-            <div>önöttvas szerkezet</div>
-            <div>színesüveg</div>
-            <div>műasztalos</div>
+    return (
+        <div className={s.container}>
+            <div className={s.column}>
+                <h4>Szakágak</h4>
+                {pairs.map((pair) => (
+                    <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Left || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Left), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Left)}>
+                        {pair.word}
+                    </button>
+                ))}
+            </div>
+            <div className={s.column}>
+                <h4>Tervezők</h4>
+                {left.map((pair) => (
+                    <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Right || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Right), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Right)}>
+                        {pair.pair}
+                    </button>
+                ))}
+            </div>
         </div>
-        <div className={s.column}>
-            <div>MÁVAG</div>
-            <div onClick={() => onClick(1)} className={clsx({ [s.selected]: selection === 1, [s.wrong]: errors[1], [s.color1]: solved[1] })}>Sóskúti Rt.</div>
-            <div>Forgó István</div>
-            <div>Neuschlosz K. és fia</div>
-            <div>Westermayer A.</div>
-            <div>Árkay S.</div>
-            <div>Schlick</div>
-        </div>
-    </div>;
+    );
 }
 
 export default Pairing;

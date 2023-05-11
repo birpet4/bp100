@@ -3,21 +3,23 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Questions from './Pages/Questions';
 import Pairing from './Pages/Pairing';
 import TrueOrFalse from './Pages/TrueOrFalse';
-import Pictures from './Pages/Pictures';
-import PicturesPairing from './Pages/PicturesPairing';
+import MultipleAnswer from './Pages/MultipleAnswer';
+import PictureGuess from './Pages/PictureGuess';
 import Home from './Pages/Home';
+import header from "./assets/Fejléc-1.jpg";
 
 function App() {
   return (
     <>
+      <div className='header'><img src={header} /></div>
       <Router>
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/questions" Component={Questions} />
           <Route path="/pair" Component={Pairing} />
           <Route path="/trueorfalse" Component={TrueOrFalse} />
-          <Route path="/pictures" Component={Pictures} />
-          <Route path="/picturepair" Component={PicturesPairing} />
+          <Route path="/multiple" Component={MultipleAnswer} />
+          <Route path="/pictureguess" Component={PictureGuess} />
         </Routes>
       </Router>
     </>

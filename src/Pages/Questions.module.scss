@@ -1,6 +1,7 @@
 .questions {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .answers {
@@ -19,7 +20,11 @@
 }
 
 .wrongAnswer {
-  border: 2px red solid;
+  border: 2px rgb(255, 70, 70) solid;
+}
+
+.rightAnswer {
+  border: 2px rgb(146, 236, 85) solid;
 }
 
 .simpleAnswerBox {
@@ -39,6 +44,11 @@
 
   &.wrong {
     background-color: rgb(226, 81, 81);
+    color: white;
+  }
+
+  &.right {
+    background-color: rgb(104, 187, 49);
     color: white;
   }
 }

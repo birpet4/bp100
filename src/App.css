@@ -3,6 +3,20 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: antiquewhite;
+}
+
+.header {
+  margin-bottom: 50px;
+
+}
+
+.header img {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .logo {
