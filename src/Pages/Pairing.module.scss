@@ -1,8 +1,12 @@
+.header {
+  margin-top: 70px;
+  margin-bottom: 0px;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  width: 100vw;
   justify-content: center;
 
   .column {
@@ -14,7 +18,7 @@
 
     button {
       -webkit-box-shadow: 0px 0px 50px 2px rgba(0, 0, 0, 0.36);
-      box-shadow: 0px 0px 50px 2px rgba(173, 173, 173, 0.36);
+      box-shadow: 0px 0px 50px 2px rgba(173, 173, 173, 0.2);
       border: 1px rgb(182, 182, 182) solid;
       padding: 10px;
       border-radius: 6px;

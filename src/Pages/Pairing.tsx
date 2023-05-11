@@ -90,7 +90,8 @@ const Pairing = () => {// Shuffle the array before initializing the state
         }
     };
 
-    return (
+    return (<>
+        <h4 className={s.header}>Párosítsa össze a szakágakat a megfelelő tervezővel!</h4>
         <div className={s.container}>
             {!solved ?
                 <>
@@ -116,7 +117,7 @@ const Pairing = () => {// Shuffle the array before initializing the state
                     <button onClick={reset}>Újra</button>
                 </div>}
         </div>
-    );
+    </>);
 }
 
 export default Pairing;
