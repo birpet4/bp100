@@ -30,4 +30,11 @@
       }
     }
   }
+  .solution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: brown;
+    font-weight: 600;
+  }
 }

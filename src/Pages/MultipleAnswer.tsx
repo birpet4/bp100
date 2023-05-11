@@ -73,7 +73,7 @@ const MultipleAnswer = () => {
             { id: 6, answer: "Zöld gerébtokos nyílászárók", solution: false }]}
             onNext={() => setTimeout(() => { setActiveQuestion(3); setIsDone(true); }, 1000)} />}
 
-        {isDone && <span>A megfejtés: fogalmam sincs</span>}
+        {isDone && <span className={s.solution}>A megfejtés: Nikiiiiiiiii</span>}
     </div>;
 }
 

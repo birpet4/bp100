@@ -35,7 +35,7 @@ const TrueOrFalse = () => {
                 <Question question={"A bejárattal szemben egy szobor várta az arra járókat."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 4]))} disabled={solved.includes(4)} />
                 <Question question={"Az épületben régen férfi kollégium is működött."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 5]), 1000)} disabled={solved.includes(5)} />
             </> :
-            <span>A megoldás: nem tudom</span>}
+            <span className={s.solution}>A megoldás: Nikiiii</span>}
     </div>
 }
 

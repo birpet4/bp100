@@ -54,13 +54,12 @@ const PictureGuess = () => {
     const [isDone, setIsDone] = useState<boolean>(false);
 
     return <div className={s.questions}>
-        <h4>Az alábbiak közül valami</h4>
+        {!isDone && <h4>Melyik térkép részlet melyik korszakhoz tartozik?</h4>}
         {activeQuestion === 1 && <QuestionAnswer
             imageQuestion={kep1}
-            answers={[{ id: 1, answer: "Váci körút", solution: true },
-            { id: 2, answer: "Szerb utca", solution: false },
-            { id: 3, answer: "Vilmos császár út", solution: false },
-            { id: 4, answer: "Váci út", solution: false }]}
+            answers={[{ id: 1, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: false },
+            { id: 2, answer: "Budapest, 1872 Pest kataszteri térképsorozata", solution: true },
+            { id: 3, answer: "Budapest, 1833 Pest - Buda térkép", solution: false }]}
             onNext={() => setTimeout(() => setActiveQuestion(2), 1000)} />}
 
         {activeQuestion === 2 && <QuestionAnswer
@@ -82,14 +81,14 @@ const PictureGuess = () => {
 
         {activeQuestion === 4 && <QuestionAnswer
             imageQuestion={kep4}
-            answers={[{ id: 1, answer: "Sarok homlokzat", solution: false },
-            { id: 2, answer: "Oroszlános erkély", solution: true },
-            { id: 3, answer: "Kariatidák tartják a párkányt", solution: false },
-            { id: 4, answer: "Timpanon koronázás", solution: false }]}
+            answers={[{ id: 1, answer: "Budapest, 1872 Pest belterületének városrendezési térképe", solution: false },
+            { id: 2, answer: "Budapest, 1908 Budapest közigazgatási térképsorozata", solution: false },
+            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true },
+            { id: 4, answer: "", solution: false }]}
             onNext={() => setTimeout(() => { setActiveQuestion(0); setIsDone(true) }, 1000)} />}
 
 
-        {isDone && <span>A megfejtés: fogalmam sincs</span>}
+        {isDone && <span className={s.solution}>A megfejtés: Disznó</span>}
     </div>;
 }
 

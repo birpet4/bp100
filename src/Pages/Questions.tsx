@@ -106,7 +106,7 @@ const Questions = () => {
             { id: 3, answer: "Szerb", solution: false }]}
             onNext={() => { setTimeout(() => { setActiveQuestion(0); setIsDone(true); }, 1000) }} />}
 
-        {isDone && <span>A megfejtés: fogalmam sincs</span>}
+        {isDone && <span className={s.solution}>A megfejtés: Niki találd ki</span>}
     </div>;
 }
 
