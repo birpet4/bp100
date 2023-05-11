@@ -1,7 +1,7 @@
 .questions {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 100vw;
 }
 
 .answers {
@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
@@ -34,6 +35,7 @@
   -webkit-box-shadow: 0px 0px 50px 2px rgba(0, 0, 0, 0.36);
   box-shadow: 0px 0px 50px 2px rgba(173, 173, 173, 0.36);
   padding: 20px;
+  width: 300px;
   cursor: pointer;
 
   @media (prefers-dark-interface) {

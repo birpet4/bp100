@@ -1,10 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
 import s from "./MultipleAnswer.module.scss";
-import kep1 from "../assets/Bp 1867-73.JPG";
-import kep2 from "../assets/Bp 1878.JPG";
-import kep3 from "../assets/Bp 1895.JPG";
-// import kep4 from "../assets/Bp napjaink.JPG";
+import { shuffleArray } from "../helpers/helper";
 
 interface SimpleAnswer {
     id: number;
@@ -14,6 +11,7 @@ interface SimpleAnswer {
 
 const QuestionAnswer = ({ question, answers, onNext }: { question: string, answers: SimpleAnswer[], onNext: () => void }) => {
     const [userAnswers, setUserAnswers] = useState<{ [x: number]: boolean }>({});
+    const [shuffledArray, setShuffledArray] = useState<SimpleAnswer[]>(answers);
     const correctAnswers = answers.filter(a => a.solution).length;
     const solvedAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === true).length, [userAnswers]);
     const wrongAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === false).length, [userAnswers]);
@@ -35,13 +33,14 @@ const QuestionAnswer = ({ question, answers, onNext }: { question: string, answe
     useEffect(() => {
         if (wrongAnswers > 1) {
             setUserAnswers({});
+            setShuffledArray(shuffleArray(answers));
         }
-    }, [wrongAnswers])
+    }, [wrongAnswers, answers])
 
     return <div>
         <h4>{question}</h4>
         <div className={s.simpleAnswer}>
-            {answers.map(a => {
+            {shuffledArray.map(a => {
                 return <div className={clsx(s.simpleAnswerBox, { [s.wrong]: userAnswers[a.id] === false, [s.right]: userAnswers[a.id] === true })} onClick={() => onClick(a)}>{a.answer}</div>
             })}
         </div>

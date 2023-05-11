@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import aranyJanosUtca from "../assets/fortepan_82178_aranyjanosutca.jpg";
-import bazilika from "../assets/fortepan_82346_bazilika.jpg";
-import harmadikHaz from "../assets/fortepan_82129_BZS37.jpg";
+import aranyJanosUtca from "../assets/fortepan_82178.jpg";
+import bazilika from "../assets/fortepan_82346.jpg";
+import harmadikHaz from "../assets/fortepan_82129.jpg";
 import petofi from "../assets/petőfi.jpg";
-import ady from "../assets/ady endre.jpg";
+import ady from "../assets/ady endre2.jpg";
 import jozsefattila from "../assets/józsef attila.jpg";
 import s from "./Questions.module.scss";
 import clsx from "clsx";

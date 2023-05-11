@@ -6,7 +6,7 @@ import TrueOrFalse from './Pages/TrueOrFalse';
 import MultipleAnswer from './Pages/MultipleAnswer';
 import PictureGuess from './Pages/PictureGuess';
 import Home from './Pages/Home';
-import header from "./assets/Fejléc-1.jpg";
+import header from "./assets/Fejléc_telo.jpg";
 
 function App() {
   return (

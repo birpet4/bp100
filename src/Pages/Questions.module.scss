@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
+
+  div {
+    background-color: antiquewhite;
+    padding: 20px;
+  }
 }
 
 .answers {
@@ -28,9 +34,9 @@
 }
 
 .simpleAnswerBox {
-  border: 1px rgb(182, 182, 182) solid;
+  border: 1px rgb(202, 202, 202) solid;
   border-radius: 6px;
-  background-color: white;
+  background-color: rgb(243, 238, 228) !important;
   -webkit-box-shadow: 0px 0px 50px 2px rgba(0, 0, 0, 0.36);
   box-shadow: 0px 0px 50px 2px rgba(173, 173, 173, 0.36);
   padding: 20px;
@@ -43,12 +49,12 @@
   }
 
   &.wrong {
-    background-color: rgb(226, 81, 81);
+    background-color: rgb(226, 81, 81) !important;
     color: white;
   }
 
   &.right {
-    background-color: rgb(104, 187, 49);
+    background-color: rgb(104, 187, 49) !important;
     color: white;
   }
 }
