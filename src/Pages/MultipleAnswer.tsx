@@ -52,6 +52,27 @@ const MultipleAnswer = () => {
     const [activeQuestion, setActiveQuestion] = useState<number>(1);
     const [isDone, setIsDone] = useState<boolean>(false);
 
+    const LOCAL_STORAGE_NAME = "multipleAnswersGame_BP100";
+
+    useEffect(() => {
+        if (isDone) {
+            localStorage.setItem(LOCAL_STORAGE_NAME, "true");
+        }
+    }, [isDone])
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_NAME) === "true") {
+            setIsDone(true);
+            setActiveQuestion(0);
+        }
+    }, [])
+
+    const reset = () => {
+        localStorage.setItem(LOCAL_STORAGE_NAME, "false");
+        setIsDone(false);
+        setActiveQuestion(1);
+    }
+
     return <div className={s.questions}>
         {activeQuestion === 1 && <QuestionAnswer
             question={"A mai Bajcsy Zsilinszky út ezt a nevet csak 1945-től viseli, hogy hívták előtte?"}
@@ -73,7 +94,10 @@ const MultipleAnswer = () => {
             { id: 6, answer: "Zöld gerébtokos nyílászárók", solution: false }]}
             onNext={() => setTimeout(() => { setActiveQuestion(3); setIsDone(true); }, 1000)} />}
 
-        {isDone && <span className={s.solution}>A megfejtés: Nikiiiiiiiii</span>}
+        {isDone && <div className={s.solutionContainer}>
+            <span className={s.solution}>A megfejtés: Nikiiiiiiiii</span>
+            <button onClick={reset}>Újra</button>
+        </div>}
     </div>;
 }
 

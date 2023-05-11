@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from "./TrueOrFalse.module.scss";
 import clsx from 'clsx';
 
@@ -26,6 +26,24 @@ const Question = ({ solution, question, onNext, disabled }: { solution: boolean,
 
 const TrueOrFalse = () => {
     const [solved, setSolved] = useState<number[]>([]);
+    const LOCAL_STORAGE_NAME = "trueOrFalseGame_BP100";
+
+    useEffect(() => {
+        if (solved.length === 5) {
+            localStorage.setItem(LOCAL_STORAGE_NAME, "true");
+        }
+    }, [solved])
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_NAME) === "true") {
+            setSolved([1, 2, 3, 4, 5])
+        }
+    }, [])
+
+    const reset = () => {
+        localStorage.setItem(LOCAL_STORAGE_NAME, "false");
+        setSolved([]);
+    }
     return <div className={s.container}>
         {solved.length !== 5 ?
             <>
@@ -35,7 +53,8 @@ const TrueOrFalse = () => {
                 <Question question={"A bejárattal szemben egy szobor várta az arra járókat."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 4]))} disabled={solved.includes(4)} />
                 <Question question={"Az épületben régen férfi kollégium is működött."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 5]), 1000)} disabled={solved.includes(5)} />
             </> :
-            <span className={s.solution}>A megoldás: Nikiiii</span>}
+            <><span className={s.solution}>A megoldás: Nikiiii</span>
+                <button onClick={reset}>Újra</button></>}
     </div>
 }
 

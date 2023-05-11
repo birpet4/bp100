@@ -35,8 +35,14 @@
     }
   }
 
-  .solution {
-    color: brown;
-    font-weight: 600;
+  .solutionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .solution {
+      color: brown;
+      font-weight: 600;
+    }
   }
 }

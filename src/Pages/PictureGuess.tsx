@@ -53,6 +53,27 @@ const PictureGuess = () => {
     const [activeQuestion, setActiveQuestion] = useState<number>(1);
     const [isDone, setIsDone] = useState<boolean>(false);
 
+    const LOCAL_STORAGE_NAME = "pictureGuessGame_BP100";
+
+    useEffect(() => {
+        if (isDone) {
+            localStorage.setItem(LOCAL_STORAGE_NAME, "true");
+        }
+    }, [isDone])
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_NAME) === "true") {
+            setIsDone(true);
+            setActiveQuestion(0);
+        }
+    }, [])
+
+    const reset = () => {
+        localStorage.setItem(LOCAL_STORAGE_NAME, "false");
+        setIsDone(false);
+        setActiveQuestion(1);
+    }
+
     return <div className={s.questions}>
         {!isDone && <h4>Melyik térkép részlet melyik korszakhoz tartozik?</h4>}
         {activeQuestion === 1 && <QuestionAnswer
@@ -78,7 +99,6 @@ const PictureGuess = () => {
             { id: 4, answer: "Timpanon koronázás", solution: true }]}
             onNext={() => setTimeout(() => setActiveQuestion(4), 1000)} />}
 
-
         {activeQuestion === 4 && <QuestionAnswer
             imageQuestion={kep4}
             answers={[{ id: 1, answer: "Budapest, 1872 Pest belterületének városrendezési térképe", solution: false },
@@ -88,7 +108,10 @@ const PictureGuess = () => {
             onNext={() => setTimeout(() => { setActiveQuestion(0); setIsDone(true) }, 1000)} />}
 
 
-        {isDone && <span className={s.solution}>A megfejtés: Disznó</span>}
+        {isDone && <div className={s.solutionContainer}>
+            <span className={s.solution}>A megfejtés: Disznó</span>
+            <button onClick={reset}>Újra</button>
+        </div>}
     </div>;
 }
 

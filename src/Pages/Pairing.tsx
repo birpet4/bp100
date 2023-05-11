@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from "./Pairing.module.scss";
 import clsx from 'clsx';
 import { shuffleArray } from '../helpers/helper';
@@ -42,6 +42,27 @@ const Pairing = () => {// Shuffle the array before initializing the state
     const [wrong, setWrong] = useState<Answer>();
     const [right, setRight] = useState<number>();
 
+    const LOCAL_STORAGE_NAME = "pairingGame_BP100";
+
+    useEffect(() => {
+        if (solved) {
+            localStorage.setItem(LOCAL_STORAGE_NAME, "true");
+        }
+    }, [solved])
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_NAME) === "true") {
+            setSolved(true);
+        }
+    }, [])
+
+    const reset = () => {
+        localStorage.setItem(LOCAL_STORAGE_NAME, "false");
+        setSolved(false);
+        setPairs(shuffledPairsLeft);
+        setLeft(shuffledPairsRight);
+    }
+
     const selectPair = (pair: Pair, column: PairColumn) => {
         // If there is a selected pair, check if the new selection is a match
         if (selectedPair) {
@@ -71,24 +92,29 @@ const Pairing = () => {// Shuffle the array before initializing the state
 
     return (
         <div className={s.container}>
-            {solved ? <><div className={s.column}>
-                <h4>Szakágak</h4>
-                {pairs.map((pair) => (
-                    <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Left || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Left), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Left)}>
-                        {pair.word}
-                    </button>
-                ))}
-            </div>
-                <div className={s.column}>
-                    <h4>Tervezők</h4>
-                    {left.map((pair) => (
-                        <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Right || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Right), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Right)}>
-                            {pair.pair}
-                        </button>
-                    ))}
-                </div></>
+            {!solved ?
+                <>
+                    <div className={s.column}>
+                        <h4>Szakágak</h4>
+                        {pairs.map((pair) => (
+                            <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Left || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Left), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Left)}>
+                                {pair.word}
+                            </button>
+                        ))}
+                    </div>
+                    <div className={s.column}>
+                        <h4>Tervezők</h4>
+                        {left.map((pair) => (
+                            <button key={pair.id} className={clsx({ [s.wrong]: wrong && (wrong?.id === pair.id && wrong.column === PairColumn.Right || selectedPair?.id === pair.id && selectedPair.selected === PairColumn.Right), [s.right]: right === pair.id && selectedPair?.id === pair.id })} onClick={() => selectPair(pair, PairColumn.Right)}>
+                                {pair.pair}
+                            </button>
+                        ))}
+                    </div></>
                 :
-                <span className={s.solution}>A megoldás: Nem találtad még ki</span>}
+                <div className={s.solutionContainer}>
+                    <span className={s.solution}>A megoldás: Nem találtad még ki</span>
+                    <button onClick={reset}>Újra</button>
+                </div>}
         </div>
     );
 }

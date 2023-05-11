@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import aranyJanosUtca from "../assets/fortepan_82178.jpg";
 import bazilika from "../assets/fortepan_82346.jpg";
 import harmadikHaz from "../assets/fortepan_82129.jpg";
@@ -70,6 +70,27 @@ const Questions = () => {
     const [activeQuestion, setActiveQuestion] = useState<number>(1);
     const [isDone, setIsDone] = useState<boolean>(false);
 
+    const LOCAL_STORAGE_NAME = "questionsGame_BP100";
+
+    useEffect(() => {
+        if (isDone) {
+            localStorage.setItem(LOCAL_STORAGE_NAME, "true");
+        }
+    }, [isDone])
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_NAME) === "true") {
+            setIsDone(true);
+            setActiveQuestion(0);
+        }
+    }, [])
+
+    const reset = () => {
+        localStorage.setItem(LOCAL_STORAGE_NAME, "false");
+        setIsDone(false);
+        setActiveQuestion(1);
+    }
+
     return <div className={s.questions}>
         {activeQuestion === 1 && <QuestionImageAnswer
             question={"Melyik a Bajcsy Zsilinszky 37-es szám alatt álló épület?"}
@@ -106,7 +127,10 @@ const Questions = () => {
             { id: 3, answer: "Szerb", solution: false }]}
             onNext={() => { setTimeout(() => { setActiveQuestion(0); setIsDone(true); }, 1000) }} />}
 
-        {isDone && <span className={s.solution}>A megfejtés: Niki találd ki</span>}
+        {isDone && <div className={s.solutionContainer}>
+            <span className={s.solution}>A megfejtés: Niki találd ki</span>
+            <button onClick={reset}>Újra</button>
+        </div>}
     </div>;
 }
 
