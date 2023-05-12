@@ -11,6 +11,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    color: brown;
+    font-weight: 600;
 
     .trueOrFalseContainer {
       display: flex;
@@ -35,16 +37,19 @@
       }
     }
   }
-  .solution {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: brown;
-    font-weight: 600;
 
+  .solutionContainer {
     button {
       color: black;
       background-color: white;
+    }
+
+    .solution {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: brown;
+      font-weight: 600;
     }
   }
 }
