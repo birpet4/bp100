@@ -16,7 +16,6 @@ const QuestionAnswer = ({ imageQuestion, answers, onNext }: { imageQuestion: str
     const [userAnswers, setUserAnswers] = useState<{ [x: number]: boolean }>({});
     const correctAnswers = answers.filter(a => a.solution).length;
     const solvedAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === true).length, [userAnswers]);
-    const wrongAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === false).length, [userAnswers]);
 
     const onClick = (answer: SimpleAnswer) => {
         if (answer.solution) {
