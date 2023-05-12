@@ -128,7 +128,9 @@ const Questions = () => {
             onNext={() => { setTimeout(() => { setActiveQuestion(0); setIsDone(true); }, 1000) }} />}
 
         {isDone && <div className={s.solutionContainer}>
-            <span className={s.solution}>A megfejtés: Niki találd ki</span>
+            <span className={s.solution}>Információ a végső megoldáshoz:
+                <br />5/3 <br /><br /><strong>1944 decemberében Sopronkőhidán végezték ki. Tudod már ki ő?</strong><br /><br />
+                További infó a következő játéknál! :)<br /></span>
             <button onClick={reset}>Újra</button>
         </div>}
     </div>;

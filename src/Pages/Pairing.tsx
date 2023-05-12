@@ -113,7 +113,9 @@ const Pairing = () => {// Shuffle the array before initializing the state
                     </div></>
                 :
                 <div className={s.solutionContainer}>
-                    <span className={s.solution}>A megoldás: Nem találtad még ki</span>
+                    <span className={s.solution}>Információ a végső megoldáshoz:<br />
+                        - 5/2 -<br /><br /> <strong>Családi és politikai okokból összetűzésbe került egy parasztpolitikussal, akit lelőttek.</strong><br /><br />
+                        További infó a következő játéknál! :)</span>
                     <button onClick={reset}>Újra</button>
                 </div>}
         </div>

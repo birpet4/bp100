@@ -6,12 +6,14 @@ import TrueOrFalse from './Pages/TrueOrFalse';
 import MultipleAnswer from './Pages/MultipleAnswer';
 import PictureGuess from './Pages/PictureGuess';
 import Home from './Pages/Home';
-import header from "./assets/Fejléc_telo.jpg";
+import headerMobile from "./assets/Fejléc_telo.jpg";
+import headerDesktop from "./assets/Fejlec.jpg";
+import ResponsiveImage from './components/ResponsiveImage';
 
 function App() {
   return (
     <>
-      <div className='header'><img src={header} /></div>
+      <div className='header'><ResponsiveImage mobileSrc={headerMobile} desktopSrc={headerDesktop} /></div>
       <Router>
         <Routes>
           <Route path="/" Component={Home} />

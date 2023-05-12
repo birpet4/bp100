@@ -85,31 +85,30 @@ const PictureGuess = () => {
 
         {activeQuestion === 2 && <QuestionAnswer
             imageQuestion={kep2}
-            answers={[{ id: 1, answer: "Sarok homlokzat", solution: false },
-            { id: 2, answer: "Oroszlános erkély", solution: false },
-            { id: 3, answer: "Kariatidák tartják a párkányt", solution: true },
-            { id: 4, answer: "Timpanon koronázás", solution: false }]}
+            answers={[{ id: 1, answer: "Budapest, 1854 Pest - Buda belterületének várostérképe", solution: false },
+            { id: 2, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: true },
+            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true }]}
             onNext={() => setTimeout(() => setActiveQuestion(3), 1000)} />}
 
         {activeQuestion === 3 && <QuestionAnswer
             imageQuestion={kep3}
-            answers={[{ id: 1, answer: "Sarok homlokzat", solution: false },
-            { id: 2, answer: "Oroszlános erkély", solution: false },
-            { id: 3, answer: "Kariatidák tartják a párkányt", solution: false },
-            { id: 4, answer: "Timpanon koronázás", solution: true }]}
+            answers={[{ id: 1, answer: "Budapest, 1895 Budapest közigazgatási térképsorozata", solution: true },
+            { id: 2, answer: "Budapest, 1903 Budapest bel- és külterület térképe", solution: false },
+            { id: 3, answer: "Budapest, 1918-46 Budapest kataszteri térképsorozata", solution: false }]}
             onNext={() => setTimeout(() => setActiveQuestion(4), 1000)} />}
 
         {activeQuestion === 4 && <QuestionAnswer
             imageQuestion={kep4}
             answers={[{ id: 1, answer: "Budapest, 1872 Pest belterületének városrendezési térképe", solution: false },
             { id: 2, answer: "Budapest, 1908 Budapest közigazgatási térképsorozata", solution: false },
-            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true },
-            { id: 4, answer: "", solution: false }]}
+            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true }]}
             onNext={() => setTimeout(() => { setActiveQuestion(0); setIsDone(true) }, 1000)} />}
 
 
         {isDone && <div className={s.solutionContainer}>
-            <span className={s.solution}>A megfejtés: Disznó</span>
+            <span className={s.solution}>Információ a végső megoldáshoz:
+                - 5/4 -<br />  <br /> <strong>Aktívan részt vett a földalatti mozgalomban.</strong><br /> <br />
+                További infó a következő játéknál! :)</span>
             <button onClick={reset}>Újra</button>
         </div>}
     </div>;

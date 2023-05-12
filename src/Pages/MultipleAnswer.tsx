@@ -75,7 +75,7 @@ const MultipleAnswer = () => {
 
     return <div className={s.questions}>
         {activeQuestion === 1 && <QuestionAnswer
-            question={"A mai Bajcsy Zsilinszky út ezt a nevet csak 1945-től viseli, hogy hívták előtte?"}
+            question={"A mai Bajcsy Zsilinszky út ezt a nevet csak 1945-től viseli, hogy hívták előtte? (3 helyes válasz)"}
             answers={[{ id: 1, answer: "Váci körút", solution: true },
             { id: 2, answer: "Szerb utca", solution: false },
             { id: 3, answer: "Vilmos császár út", solution: true },
@@ -85,7 +85,7 @@ const MultipleAnswer = () => {
             onNext={() => setTimeout(() => setActiveQuestion(2), 1000)} />}
 
         {activeQuestion === 2 && <QuestionAnswer
-            question={"Az épület homlokzatát mi jellemzi?"}
+            question={"Az épület homlokzatát mi jellemzi? (3 helyes válasz)"}
             answers={[{ id: 1, answer: "Sarok homlokzat", solution: true },
             { id: 2, answer: "Oroszlános erkély", solution: false },
             { id: 3, answer: "Kariatidák tartják a párkányt", solution: true },
@@ -95,7 +95,9 @@ const MultipleAnswer = () => {
             onNext={() => setTimeout(() => { setActiveQuestion(3); setIsDone(true); }, 1000)} />}
 
         {isDone && <div className={s.solutionContainer}>
-            <span className={s.solution}>A megfejtés: Nikiiiiiiiii</span>
+            <span className={s.solution}>Információ a végső megoldáshoz:<br />
+                - 5/1 - <br /><br /><strong>Édesanyja és felesége keresztneve azonos.</strong><br /><br />
+                További infó a következő játéknál! :)</span>
             <button onClick={reset}>Újra</button>
         </div>}
     </div>;
