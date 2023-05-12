@@ -53,10 +53,12 @@ const TrueOrFalse = () => {
                 <Question question={"A bejárattal szemben egy szobor várta az arra járókat."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 4]))} disabled={solved.includes(4)} />
                 <Question question={"Az épületben régen férfi kollégium is működött."} solution={false} onNext={() => setTimeout(() => setSolved([...solved, 5]), 1000)} disabled={solved.includes(5)} />
             </> :
-            <><span className={s.solution}>Információ a végső megoldáshoz:<br />
-                - 5/5 -<br /><br /> <strong>Róla nevezték el az utcát ahol most vagyunk. Ki ő?</strong><br /><br />
-                Ha kitaláltad jelezd nekünk jutalomért cserébe!</span>
-                <button onClick={reset}>Újra</button></>}
+            <div className={s.solutionContainer}>
+                <span className={s.solution}>Információ a végső megoldáshoz:<br />
+                    - 5/5 -<br /><br /> <strong>Róla nevezték el az utcát ahol most vagyunk. Ki ő?</strong><br /><br />
+                    Ha kitaláltad jelezd nekünk jutalomért cserébe!<br /></span>
+                <button onClick={reset}>Újra</button>
+            </div>}
     </div>
 }
 
