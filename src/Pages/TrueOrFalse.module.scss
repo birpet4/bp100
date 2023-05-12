@@ -39,6 +39,9 @@
   }
 
   .solutionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     button {
       color: black;
       background-color: white;
