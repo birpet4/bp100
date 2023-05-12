@@ -11,7 +11,7 @@ interface SimpleAnswer {
 
 const QuestionAnswer = ({ question, answers, onNext }: { question: string, answers: SimpleAnswer[], onNext: () => void }) => {
     const [userAnswers, setUserAnswers] = useState<{ [x: number]: boolean }>({});
-    const [shuffledArray, setShuffledArray] = useState<SimpleAnswer[]>(shuffleArray(answers));
+    const [shuffledArray, setShuffledArray] = useState<SimpleAnswer[]>(answers);
     const correctAnswers = answers.filter(a => a.solution).length;
     const solvedAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === true).length, [userAnswers]);
     const wrongAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === false).length, [userAnswers]);
@@ -86,12 +86,13 @@ const MultipleAnswer = () => {
 
         {activeQuestion === 2 && <QuestionAnswer
             question={"Az épület homlokzatát mi jellemzi? (3 helyes válasz)"}
-            answers={[{ id: 1, answer: "Sarok homlokzat", solution: true },
-            { id: 2, answer: "Oroszlános erkély", solution: false },
-            { id: 3, answer: "Kariatidák tartják a párkányt", solution: true },
-            { id: 4, answer: "Timpanon koronázás", solution: true },
-            { id: 5, answer: "Szimetrikus megjelenés", solution: false },
-            { id: 6, answer: "Zöld gerébtokos nyílászárók", solution: false }]}
+            answers={[
+                { id: 1, answer: "Oroszlános erkély", solution: false },
+                { id: 2, answer: "Sarok homlokzat", solution: true },
+                { id: 3, answer: "Timpanon koronázás", solution: true },
+                { id: 4, answer: "Szimetrikus megjelenés", solution: false },
+                { id: 5, answer: "Zöld gerébtokos nyílászárók", solution: false },
+                { id: 6, answer: "Kariatidák tartják a párkányt", solution: true }]}
             onNext={() => setTimeout(() => { setActiveQuestion(3); setIsDone(true); }, 1000)} />}
 
         {isDone && <div className={s.solutionContainer}>
