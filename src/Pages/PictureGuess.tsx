@@ -32,12 +32,6 @@ const QuestionAnswer = ({ imageQuestion, answers, onNext }: { imageQuestion: str
         }
     }, [solvedAnswers, correctAnswers, onNext])
 
-    useEffect(() => {
-        if (wrongAnswers > 1) {
-            setUserAnswers({});
-        }
-    }, [wrongAnswers])
-
     return <div>
         <img src={imageQuestion} />
         <div className={s.simpleAnswer}>
@@ -86,8 +80,8 @@ const PictureGuess = () => {
         {activeQuestion === 2 && <QuestionAnswer
             imageQuestion={kep2}
             answers={[{ id: 1, answer: "Budapest, 1854 Pest - Buda belterületének várostérképe", solution: false },
-            { id: 2, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: false },
-            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true }]}
+            { id: 2, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: true },
+            { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: false }]}
             onNext={() => setTimeout(() => setActiveQuestion(3), 1000)} />}
 
         {activeQuestion === 3 && <QuestionAnswer
