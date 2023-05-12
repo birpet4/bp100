@@ -86,7 +86,7 @@ const PictureGuess = () => {
         {activeQuestion === 2 && <QuestionAnswer
             imageQuestion={kep2}
             answers={[{ id: 1, answer: "Budapest, 1854 Pest - Buda belterületének várostérképe", solution: false },
-            { id: 2, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: true },
+            { id: 2, answer: "Budapest, 1878 Budapest méter rendszerben készült kataszteri jellegű térképe", solution: false },
             { id: 3, answer: "Budapest, 2023 Google maps térkép részlet", solution: true }]}
             onNext={() => setTimeout(() => setActiveQuestion(3), 1000)} />}
 

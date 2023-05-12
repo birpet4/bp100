@@ -17,6 +17,11 @@
       justify-content: center;
       gap: 20px;
 
+      button {
+        color: black;
+        background-color: white;
+      }
+
       .solved {
         background-color: green;
       }
