@@ -11,7 +11,7 @@ interface SimpleAnswer {
 
 const QuestionAnswer = ({ question, answers, onNext }: { question: string, answers: SimpleAnswer[], onNext: () => void }) => {
     const [userAnswers, setUserAnswers] = useState<{ [x: number]: boolean }>({});
-    const [shuffledArray, setShuffledArray] = useState<SimpleAnswer[]>(answers);
+    const [shuffledArray, setShuffledArray] = useState<SimpleAnswer[]>(shuffleArray(answers));
     const correctAnswers = answers.filter(a => a.solution).length;
     const solvedAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === true).length, [userAnswers]);
     const wrongAnswers = useMemo(() => Object.values(userAnswers).filter(u => u === false).length, [userAnswers]);
