@@ -76,7 +76,7 @@ const MultipleAnswer = () => {
     return <div className={s.questions}>
         {activeQuestion === 1 && <QuestionAnswer
             question={"A mai Bajcsy Zsilinszky út ezt a nevet csak 1945-től viseli, hogy hívták előtte? (3 helyes válasz)"}
-            answers={[{ id: 1, answer: "Váci körút", solution: true },
+            answers={[{ id: 1, answer: "Waitznerstraße", solution: true },
             { id: 2, answer: "Szerb utca", solution: false },
             { id: 3, answer: "Vilmos császár út", solution: true },
             { id: 4, answer: "Váci út", solution: true },

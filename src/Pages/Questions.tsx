@@ -108,7 +108,7 @@ const Questions = () => {
 
         {activeQuestion === 3 && <QuestionAnswer
             question={"Milyen stílusban épült?"}
-            answers={[{ id: 1, answer: "kora historizmus", solution: true },
+            answers={[{ id: 1, answer: "kora historizmus (neoreneszánsz)", solution: true },
             { id: 2, answer: "klasszicista", solution: false },
             { id: 3, answer: "romantikus", solution: false }]}
             onNext={() => setTimeout(() => setActiveQuestion(4), 1000)} />}
