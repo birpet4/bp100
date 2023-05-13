@@ -91,7 +91,7 @@ const Pairing = () => {// Shuffle the array before initializing the state
     };
 
     return (<>
-        <h4 className={s.header}>Párosítsa össze a szakágakat a megfelelő tervezővel!</h4>
+        {!solved && <h4 className={s.header}>Párosítsa össze a szakágakat a megfelelő tervezővel!</h4>}
         <div className={s.container}>
             {!solved ?
                 <>
