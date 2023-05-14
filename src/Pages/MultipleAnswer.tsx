@@ -79,7 +79,7 @@ const MultipleAnswer = () => {
             answers={[{ id: 1, answer: "Waitznerstraße", solution: true },
             { id: 2, answer: "Szerb utca", solution: false },
             { id: 3, answer: "Vilmos császár út", solution: true },
-            { id: 4, answer: "Váci körút", solution: true },
+            { id: 4, answer: "Váci út/körút", solution: true },
             { id: 5, answer: "Mehmed szultán út", solution: false },
             { id: 6, answer: "Károly körút", solution: false }]}
             onNext={() => setTimeout(() => setActiveQuestion(2), 1000)} />}
